@@ -11,7 +11,7 @@
 
 
 // ESERCIZIO 1 (suggerimento: ci sono 6 errori)
-const cars = [
+const auto = [
     {
         manufacturer: 'Ford',
         model: 'Fiesta',
@@ -56,7 +56,7 @@ const cars = [
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }
+    },
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -64,23 +64,36 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter((auto) >= auto.type === 'benzina');
 
-const dieselCars = cars.filter((auto) => {
-    auto.type === 'diesel';
+const gasolineCars = auto.filter((auto) => auto.type.toLowerCase() === 'benzina');
+
+const dieselCars = auto.filter((auto, dieselCars) => {
+    dieselCars = auto.type.toLowerCase() === 'diesel'
+
+    return dieselCars
 });
 
-const otherCars = cars.filter((auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+const otherCars = auto.filter((auto) => {
+    return auto.type.toLocaleLowerCase() !== 'benzina' && auto.type.toLowerCase() !== 'diesel';
 });
 
 console.log('Auto a benzina');
-console.log('*******************************');
 console.log(gasolineCars);
+console.log('*******************************');
 
 console.log('Auto a diesel');
-console.log('*******************************');
 console.log(dieselCars);
+console.log('*******************************');
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+
+/*La funzione restituisce 3 array con 3 tipi di vettura : a benzina, diesel oppure altro.
+A riga 59 manca una ',' tra gli oggetti. 
+Riga 67 '=>' scritta in modo incorretto.
+Riga 75 va utilizzato && (and) al posto di || (or).
+Va assegniato il valore a dieselCars.
+Va gestito il problema delle maiuscole attraverso la funzione toLowerCase
+
+*/
